@@ -73,19 +73,6 @@ const logout = async (req, res) => {
   res.json({ message: "Logged out successfully" });
 };
 
-const getCurrentUser = async (req, res) => {
-  const user = await User.findOne(req.email);
-  res.json({
-    user: {
-      id: user._id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      profileImage: user.profileImage,
-    },
-  });
-};
-
 const updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -147,7 +134,6 @@ module.exports = {
   register,
   login,
   logout,
-  getCurrentUser,
   updateProfile,
   updatePassword,
 };
