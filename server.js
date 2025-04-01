@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 const connectDB = require("./db/db");
-
+const authRoutes = require("./routes/authRoutes");
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 7000;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Connect to MongoDB
 connectDB();
@@ -24,6 +26,8 @@ connectDB();
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Task Management API" });
 });
+
+app.use("/api/users", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
