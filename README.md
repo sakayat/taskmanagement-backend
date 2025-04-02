@@ -30,7 +30,7 @@ A RESTful API backend for a task management application built with Node.js, Expr
 
 1. Clone the repository
    ```
-   git clone [<repository-url>](https://github.com/sakayat/taskmanagement-backend)
+   git clone https://github.com/sakayat/taskmanagement-backend
    cd taskmanagement-backend
    ```
 
